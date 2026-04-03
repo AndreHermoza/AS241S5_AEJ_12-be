@@ -1,9 +1,7 @@
 package andre.hermoza.apis.service;
 
 import andre.hermoza.apis.model.BGRemover;
-import andre.hermoza.apis.model.textToImage;
 import andre.hermoza.apis.repository.BGRemoverRepository;
-import andre.hermoza.apis.repository.TTIRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ByteArrayResource;
@@ -15,8 +13,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Map;
 
 @Service
 @Slf4j
