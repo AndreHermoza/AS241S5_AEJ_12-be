@@ -38,16 +38,15 @@ public class TTIRest {
     }
 
     @PatchMapping("/deactivate/{id}")
-    public Mono<textToImage> deactivate(@PathVariable Integer id){
+    public Mono<textToImage> deactivate(@PathVariable("id") Integer id){
         return ttiService.findByID(id)
                 .flatMap(textToImage -> {
-                    textToImage.setStatus(false);
                     return ttiService.setStatus(id, false);
                 });
     }
 
     @PatchMapping("/activate/{id}")
-    public Mono<textToImage> activate(@PathVariable Integer id){
+    public Mono<textToImage> activate(@PathVariable("id") Integer id){
         return ttiService.findByID(id)
                 .flatMap(textToImage -> {
                     textToImage.setStatus(true);
