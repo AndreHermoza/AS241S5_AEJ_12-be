@@ -1,6 +1,7 @@
 package andre.hermoza.apis.rest;
 
 import andre.hermoza.apis.model.BGRemover;
+import andre.hermoza.apis.model.textToImage;
 import andre.hermoza.apis.service.BGRemoverService;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -33,5 +34,22 @@ public class BGRemoverRest {
     public Mono<BGRemover> process(@RequestBody Map<String, String> request) {
         String img_url = request.get("source_image_url");
         return BGService.removeBackground(img_url);
+    }
+
+    @PatchMapping("/deactivate/{id}")
+    public Mono<BGRemover> deactivate(@PathVariable("id") Integer id){
+        return BGService.findByID(id)
+                .flatMap(textToImage -> {
+                    return BGService.setStatus(id, false);
+                });
+    }
+
+    @PatchMapping("/activate/{id}")
+    public Mono<BGRemover> activate(@PathVariable("id") Integer id){
+        return BGService.findByID(id)
+                .flatMap(textToImage -> {
+                    textToImage.setStatus(true);
+                    return BGService.setStatus(id, true);
+                });
     }
 }

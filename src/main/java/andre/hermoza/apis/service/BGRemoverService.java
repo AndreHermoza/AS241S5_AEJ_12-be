@@ -1,6 +1,7 @@
 package andre.hermoza.apis.service;
 
 import andre.hermoza.apis.model.BGRemover;
+import andre.hermoza.apis.model.textToImage;
 import andre.hermoza.apis.repository.BGRemoverRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -93,6 +94,15 @@ public class BGRemoverService {
                 .onErrorResume(e -> {
                     log.error("Fallo en el flujo: {}", e.getMessage());
                     return Mono.error(new RuntimeException("Error: " + e.getMessage()));
+                });
+    }
+
+    public Mono<BGRemover> setStatus (Integer id, boolean status) {
+        log.info("Estado cambiado a: {}" , status);
+        return BGRepo.findById(id)
+                .flatMap(textToImage -> {
+                    textToImage.setStatus(status);
+                    return BGRepo.save(textToImage);
                 });
     }
 }
