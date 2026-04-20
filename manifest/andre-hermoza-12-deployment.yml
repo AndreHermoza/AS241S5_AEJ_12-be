@@ -1,0 +1,23 @@
+# kubectl apply -f andre-hermoza-12-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: andre-hermoza-12-deployment
+  namespace: andre-hermoza-12-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: andre-hermoza-12-deployment        # Debe coincidir con las etiquetas del Service
+  template:
+    metadata:
+      labels:
+        app: andre-hermoza-12-deployment      # Debe coincidir con las etiquetas del Service
+    spec:
+      containers:
+        - name: andre-hermoza-12-container
+          image: andrehermoza/tti-bgremover:1.2   # Reemplaza con tu imagen Docker Hub
+          imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
+          envFrom:
+            - secretRef:
+                name: andre-hermoza-12-secret  # Esto cargará todos los valores como variables de entorno

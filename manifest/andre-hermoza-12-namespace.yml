@@ -1,0 +1,6 @@
+# kubectl create namespace andre-hermoza-12-namespace (COMANDO)
+# kubectl apply -f andre-hermoza-12-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: andre-hermoza-12-namespace

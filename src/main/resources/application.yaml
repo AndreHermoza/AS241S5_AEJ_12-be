@@ -1,23 +1,22 @@
+server:
+  port: ${PORT}
+  url: ${SERVER_URL:http://localhost:8086}
+
 spring:
   application:
     name: apis
-
   r2dbc:
-    url: r2dbc:postgresql://ep-late-firefly-a4bk6248.us-east-1.aws.neon.tech/ias?require&channelBinding=require&sslmode=require
-    username: neondb_owner
-    password: npg_f2kLVzx4lFwo
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     pool:
       enabled: true
       max-idle-time: 30m
       validation-query: SELECT 1
 
-
 api:
   rapidapi:
     key: ${RAPIDAPI_KEY:0c4477615cmsh03cea9e68087058p19e350jsn7ef0e4c88742}
-    host-flux:  ${HOST_FLUX:ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
+    host-flux: ${HOST_FLUX:ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
     host-remover: ${HOST_REMOVER:ai-background-remover.p.rapidapi.com}
     base-url: ${BASE_URL:https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
-
-server:
-  port: 8086
