@@ -1,5 +1,5 @@
 server:
-  port: ${PORT}
+  port: ${PORT:8086}
   url: ${SERVER_URL:http://localhost:8086}
 
 spring:
@@ -16,7 +16,7 @@ spring:
 
 api:
   rapidapi:
-    key: ${RAPIDAPI_KEY:0c4477615cmsh03cea9e68087058p19e350jsn7ef0e4c88742}
+    key: ${RAPIDAPI_APIKEY:0c4477615cmsh03cea9e68087058p19e350jsn7ef0e4c88742}
     host-flux: ${HOST_FLUX:ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
     host-remover: ${HOST_REMOVER:ai-background-remover.p.rapidapi.com}
     base-url: ${BASE_URL:https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com}

@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: andre-hermoza-12-container
-          image: andrehermoza/tti-bgremover:1.2   # Reemplaza con tu imagen Docker Hub
-          imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
+          image: andrehermoza/tti-bgremover:1.4   # Reemplaza con tu imagen Docker Hub
+          imagePullPolicy: Always        # Asegurar que siempre traiga la imagen actualizada si usas el mismo tag
           envFrom:
             - secretRef:
                 name: andre-hermoza-12-secret  # Esto cargará todos los valores como variables de entorno
