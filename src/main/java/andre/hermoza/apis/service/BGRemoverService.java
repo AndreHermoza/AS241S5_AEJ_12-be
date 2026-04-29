@@ -48,26 +48,15 @@ public class BGRemoverService {
     public Mono<BGRemover> removeBackgroundFromFile(FilePart filePart) {
         log.info("Recibido archivo: {}, tamaño: {}", filePart.filename(), filePart.headers().getContentLength());
 
-        // 1. Leer el contenido del FilePart como byte[]
-        return filePart.content()
-                .map(dataBuffer -> {
+        return DataBufferUtils.join(filePart.content())
+                .flatMap(dataBuffer -> {
                     byte[] bytes = new byte[dataBuffer.readableByteCount()];
                     dataBuffer.read(bytes);
                     DataBufferUtils.release(dataBuffer);
-                    return bytes;
-                })
-                .reduce((a, b) -> {
-                    // En caso de que llegara en varios trozos, se concatenan
-                    byte[] merged = new byte[a.length + b.length];
-                    System.arraycopy(a, 0, merged, 0, a.length);
-                    System.arraycopy(b, 0, merged, a.length, b.length);
-                    return merged;
-                })
-                .defaultIfEmpty(new byte[0])
-                .flatMap(fileBytes -> {
+
                     // 2. Construir el multipart para RapidAPI
                     MultipartBodyBuilder builder = new MultipartBodyBuilder();
-                    builder.part("image", new ByteArrayResource(fileBytes))
+                    builder.part("image", new ByteArrayResource(bytes))
                             .filename(filePart.filename())
                             .contentType(MediaType.IMAGE_PNG);
                     builder.part("model", "falcon");
