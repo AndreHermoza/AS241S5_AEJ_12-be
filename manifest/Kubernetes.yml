@@ -44,4 +44,4 @@ curl http://192.168.49.2:30001/v1/api/age-detector
 curl http://192.168.49.2:30001/v1/api/age-detector/1
   
   # crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
-kubectl port-forward service/juan-condori-00-service 8085:30001
+kubectl port-forward service/andre-hermoza-12-service 8085:30001

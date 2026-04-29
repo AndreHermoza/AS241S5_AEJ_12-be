@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  apis:
+    build: .
+    container_name: andre-hermoza-12-container
+    ports:
+      - "8086:8086"
+    environment:
+      - PORT=8086
+      - DATABASE_URL=r2dbc:postgresql://ep-late-firefly-a4bk6248.us-east-1.aws.neon.tech/ias?require&channelBinding=require&sslmode=require
+      - DATABASE_USERNAME=neondb_owner
+      - DATABASE_PASSWORD=npg_f2kLVzx4lFwo
+      - RAPIDAPI_APIKEY=0c4477615cmsh03cea9e68087058p19e350jsn7ef0e4c88742
+    volumes:
+      - ./uploads:/app/uploads
+    restart: always
