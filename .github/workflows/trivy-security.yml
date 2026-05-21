@@ -57,7 +57,7 @@ jobs:
       - name: Run Trivy Filesystem Scan
         run: |
           trivy fs . \
-            --severity UNKNOWN, MEDIUM,HIGH,CRITICAL \
+            --severity UNKNOWN,MEDIUM,HIGH,CRITICAL \
             --ignore-unfixed \
             --exit-code 0
 
