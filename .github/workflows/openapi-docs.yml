@@ -1,0 +1,41 @@
+name: OpenAPI Documentation
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-openapi:
+    name: Generate OpenAPI Specification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run tests and generate OpenAPI
+        run: mvn -B verify
+
+      - name: Upload OpenAPI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-spec
+          path: docs/openapi/
+          retention-days: 30
+
+      - name: Validate OpenAPI file exists
+        run: test -f docs/openapi/openapi.json

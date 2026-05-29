@@ -6,9 +6,9 @@ spring:
   application:
     name: apis
   r2dbc:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL:r2dbc:postgresql://ep-late-firefly-a4bk6248.us-east-1.aws.neon.tech/ias?require&channelBinding=require&sslmode=require}
+    username: ${DATABASE_USERNAME:neondb_owner}
+    password: ${DATABASE_PASSWORD:npg_f2kLVzx4lFwo}
     pool:
       enabled: true
       max-idle-time: 30m
@@ -20,3 +20,13 @@ api:
     host-flux: ${HOST_FLUX:ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
     host-remover: ${HOST_REMOVER:ai-background-remover.p.rapidapi.com}
     base-url: ${BASE_URL:https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    display-request-duration: true
+  show-actuator: false
