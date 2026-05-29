@@ -35,7 +35,7 @@ jobs:
           context: . # Dockerfile en la raíz del proyecto
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME_ANDRE }}/as241s5_aej_12-be:latest
-            ${{ secrets.DOCKERHUB_USERNAME_ANDRE }}/as241s5_aej_12-be:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME_ANDRE }}/as241s5_aej_12-bes:latest
+            ${{ secrets.DOCKERHUB_USERNAME_ANDRE }}/as241s5_aej_12-bes:${{ github.sha }}
 
 # Comentario para ejecutar el Pipeline
