@@ -28,7 +28,7 @@ jobs:
           cache: maven
 
       - name: Run tests and generate OpenAPI
-        run: mvn -B verify
+        run: mvn -B test
 
       - name: Upload OpenAPI artifact
         uses: actions/upload-artifact@v4
