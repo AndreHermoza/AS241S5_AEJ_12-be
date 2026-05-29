@@ -20,13 +20,3 @@ api:
     host-flux: ${HOST_FLUX:ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
     host-remover: ${HOST_REMOVER:ai-background-remover.p.rapidapi.com}
     base-url: ${BASE_URL:https://ai-text-to-image-generator-flux-free-api.p.rapidapi.com}
-
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html
-    operations-sorter: method
-    tags-sorter: alpha
-    display-request-duration: true
-  show-actuator: false

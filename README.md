@@ -1,5 +1,9 @@
 # ✨ AI Services API - Spring Boot Reactive
 
+[![CI](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/ci.yml/badge.svg)](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/ci.yml)
+[![Docker Hub](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/dockerhub-ci.yml/badge.svg)](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/dockerhub-ci.yml)
+[![Security Scan](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/trivy-security.yml/badge.svg)](https://github.com/AndreHermoza/AS241S5_AEJ_12-be/actions/workflows/trivy-security.yml)
+
 Una API reactiva moderna construida con Spring Boot que integra poderosos modelos de Inteligencia Artificial procedentes de **Rapid API**, utilizando un stack completamente no bloqueante (WebFlux + R2DBC).
 
 ---

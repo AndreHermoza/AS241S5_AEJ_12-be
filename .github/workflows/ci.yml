@@ -1,4 +1,4 @@
-name: OpenAPI Documentation
+name: CI
 
 on:
   push:
@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate-openapi:
-    name: Generate OpenAPI Specification
+  build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -27,15 +27,5 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Run tests and generate OpenAPI
+      - name: Run tests
         run: mvn -B test
-
-      - name: Upload OpenAPI artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: openapi-spec
-          path: docs/openapi/
-          retention-days: 30
-
-      - name: Validate OpenAPI file exists
-        run: test -f docs/openapi/openapi.json
